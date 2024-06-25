@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pnpm compile && concurrently 'docker-compose up' 'cd packages/app && pnpm start' 'cd packages/secondary-service && pnpm start'",
+    "start:all": "concurrently pnpm:start:signoz pnpm:start",
+    "compile": "tsc --build --verbose",
+    "start:signoz": "cd submodules/signoz/deploy && docker-compose -f ./docker/clickhouse-setup/docker-compose.yaml up -d",
+    "stop:signoz": "cd submodules/signoz/deploy && docker-compose -f ./docker/clickhouse-setup/docker-compose.yaml down"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "typescript": "^5.5.2"
   }
 }

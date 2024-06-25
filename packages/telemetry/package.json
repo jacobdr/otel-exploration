@@ -4,7 +4,12 @@
   "description": "",
   "type": "module",
   "module": "./dist/src/index.mjs",
+  "main": "./dist/src/index.mjs",
   "types": "./dist/src/index.d.mts",
+  "files": [
+    "./dist/package.json",
+    "./dist/src/**/*"
+  ],
   "scripts": {
     "start": "tsx src/index.mts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,11 +24,13 @@
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/context-async-hooks": "^1.25.1",
     "@opentelemetry/core": "^1.25.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.52.1",
     "@opentelemetry/instrumentation": "^0.52.1",
     "@opentelemetry/instrumentation-fastify": "^0.37.0",
     "@opentelemetry/instrumentation-http": "^0.52.1",
+    "@opentelemetry/instrumentation-undici": "^0.3.0",
     "@opentelemetry/resources": "^1.25.1",
     "@opentelemetry/sdk-trace-base": "^1.25.1",
     "@opentelemetry/sdk-trace-node": "^1.25.1",

@@ -1,24 +1,25 @@
 {
-  "name": "@otel-exploration/app",
+  "name": "@otel-exploration/db",
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "",
+  "main": "./dist/src/index.mjs",
+  "module": "./dist/src/index.mjs",
+  "types": "./dist/src/index.d.mts",
   "scripts": {
-    "start": "tsx src/index.mts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/node": "^20.14.8",
     "tsx": "^4.15.7",
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "@otel-exploration/telemetry": "workspace:*",
-    "@otel-exploration/db": "workspace:*",
-    "fastify": "^4.28.0"
+    "@prisma/client": "5.16.0",
+    "prisma": "^5.16.0"
   }
 }

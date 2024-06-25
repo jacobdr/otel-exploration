@@ -2,7 +2,8 @@
   "references": [
     { "path": "./packages/app" },
     { "path": "./packages/secondary-service" },
-    { "path": "./packages/telemetry" }
+    { "path": "./packages/telemetry" },
+    { "path": "./packages/load-test" }
   ],
   "include": [],
   "compilerOptions": {

@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["package.json", "./src", "prisma/seed.ts"],
+  "references": [{ "path": "../telemetry" }],
+  "compilerOptions": { "outDir": "./dist" }
+}

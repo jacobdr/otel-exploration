@@ -1,24 +1,21 @@
 {
-  "name": "@otel-exploration/app",
+  "name": "@otel-exploration/load-test",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "",
   "scripts": {
-    "start": "tsx src/index.mts",
+    "start": "k6 run src/index.mts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/k6": "^0.51.1",
     "@types/node": "^20.14.8",
+    "http": "link:@types/k6/http",
     "tsx": "^4.15.7",
     "typescript": "^5.5.2"
-  },
-  "dependencies": {
-    "@otel-exploration/telemetry": "workspace:*",
-    "@otel-exploration/db": "workspace:*",
-    "fastify": "^4.28.0"
   }
 }

@@ -1,6 +1,7 @@
 import { setupTelemetry } from "@otel-exploration/telemetry";
+import packageJson from "../package.json";
 import { runServer } from "./server.js";
 
-setupTelemetry();
+setupTelemetry(packageJson);
 
 await runServer();
