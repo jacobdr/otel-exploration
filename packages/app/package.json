@@ -5,6 +5,7 @@
   "type": "module",
   "main": "",
   "scripts": {
+    "start": "tsx src/index.mts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +17,9 @@
     "typescript": "^5.5.2"
   },
   "dependencies": {
+    "@otel-exploration/telemetry": "workspace:*",
+    "@prisma/client": "5.16.0",
+    "fastify": "^4.28.0",
     "prisma": "^5.16.0"
   }
 }
