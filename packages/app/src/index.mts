@@ -1,4 +1,4 @@
-import { setupTelemetry } from "./telemetry.mjs";
+import { setupTelemetry } from "@otel-exploration/telemetry";
 import { runServer } from "./server.js";
 
 setupTelemetry();
