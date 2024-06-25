@@ -15,11 +15,11 @@ export async function runServer() {
   });
 
   // Declare a route
-  fastify.get("/bar", async function rootRoute(request, reply) {
-    console.log(
-      "Secondary service incoming headers",
-      JSON.stringify(request.headers, null, 4)
-    );
+  fastify.get("/bar", async function rootRoute(_request, reply) {
+    // console.log(
+    //   "Secondary service incoming headers",
+    //   JSON.stringify(request.headers, null, 4)
+    // );
     const users = await prismaClient.post.findMany();
     reply.send({ hello: "world", users });
   });

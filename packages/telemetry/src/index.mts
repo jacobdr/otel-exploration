@@ -40,9 +40,8 @@ export interface IRequiredTelemetryConfig {
 }
 
 export function setupTelemetry(config: IRequiredTelemetryConfig) {
-  diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ALL);
+  // diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ALL);
 
-  // console.log("JDR DEBUG", foo);
   // Configure the trace provider
   const provider = new NodeTracerProvider({
     // forceFlushTimeoutMillis: 1000,
@@ -73,9 +72,7 @@ export function setupTelemetry(config: IRequiredTelemetryConfig) {
     instrumentations: [
       new PI.PrismaInstrumentation(),
       new UndiciInstrumentation({
-        requestHook: (span, request) => {
-          console.log("JDR DEBUG UndiciInstrumentation", { span, request });
-        },
+        // requestHook: (span, request) => {},
       }),
       // Fastify instrumentation expects HTTP layer to be instrumented
       new HttpInstrumentation({

@@ -4,7 +4,7 @@ const PORT = 3000;
 
 export async function runServer() {
   const prismaClient = new PrismaClient({
-    log: ["query"],
+    // log: ["query"],
   });
   // Deferred loading so that telemetry can monkey patch
   const Fastify = (await import("fastify")).default;
@@ -30,6 +30,12 @@ export async function runServer() {
     const secondaryServiceData = await fetch("http://localhost:3001/bar");
     await secondaryServiceData.json();
     reply.send({ hello: "world", users });
+  });
+
+  fastify.get("/db/metrics", async function rootRoute(_request, reply) {
+    const metrics = await prismaClient.$metrics.json();
+    console.dir(metrics, { depth: Number.POSITIVE_INFINITY });
+    reply.send(metrics);
   });
 
   // Run the server!

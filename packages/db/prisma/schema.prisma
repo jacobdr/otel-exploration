@@ -5,7 +5,7 @@ datasource Db {
 
 generator Ts {
     provider        = "prisma-client-js"
-    previewFeatures = ["tracing", "relationJoins"]
+    previewFeatures = ["tracing", "relationJoins", "metrics"]
 }
 
 model User {
