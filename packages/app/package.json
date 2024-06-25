@@ -1,0 +1,21 @@
+{
+  "name": "@otel-exploration/app",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.8",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "prisma": "^5.16.0"
+  }
+}
