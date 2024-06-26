@@ -2,5 +2,9 @@
   "extends": "../../tsconfig.json",
   "include": ["package.json", "./src"],
   "references": [],
-  "compilerOptions": { "outDir": "./dist", "module": "CommonJS" }
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "Preserve",
+    "moduleResolution": "Bundler"
+  }
 }

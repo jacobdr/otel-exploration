@@ -14,7 +14,6 @@
   "devDependencies": {
     "@types/k6": "^0.51.1",
     "@types/node": "^20.14.8",
-    "http": "link:@types/k6/http",
     "tsx": "^4.15.7",
     "typescript": "^5.5.2"
   }

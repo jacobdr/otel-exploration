@@ -2,10 +2,10 @@
   "name": "@otel-exploration/app",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "",
   "scripts": {
-    "start": "tsx src/index.mts",
+    "start": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

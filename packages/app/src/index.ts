@@ -2,6 +2,9 @@ import { setupTelemetry } from "@otel-exploration/telemetry";
 import packageJson from "../package.json";
 import { runServer } from "./server.js";
 
-setupTelemetry(packageJson);
+async function main() {
+  const { resource } = await setupTelemetry(packageJson);
+  await runServer({ resource });
+}
 
-await runServer();
+main();

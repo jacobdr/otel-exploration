@@ -2,5 +2,5 @@
   "extends": "../../tsconfig.json",
   "include": ["package.json", "./src"],
   "references": [{ "path": "../telemetry" }, { "path": "../db" }],
-  "compilerOptions": { "outDir": "./dist" }
+  "compilerOptions": { "outDir": "./dist", "module": "NodeNext" }
 }

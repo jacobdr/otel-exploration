@@ -3,7 +3,8 @@ import { faker } from "@faker-js/faker";
 let prismaClient: PrismaClient | null;
 
 // On top of alice and bob
-const NUMBER_OF_FAKE_USERS_ADDITIONAL = 30;
+const NUMBER_OF_FAKE_USERS_ADDITIONAL = 500;
+const NUMBER_OF_POSTS_PER_USER = 10;
 
 async function main() {
   const prisma = new PrismaClient({
@@ -56,15 +57,22 @@ async function main() {
   const allPeople: Prisma.UserCreateInput[] = [];
 
   while (peopleCounter < NUMBER_OF_FAKE_USERS_ADDITIONAL) {
-    const fakePost: Prisma.PostCreateWithoutAuthorInput = {
-      title: faker.word.words({ count: 3 }),
-      content: faker.word.words({ count: 100 }),
-    };
+    let postCounter = 0;
+    const fakePosts: Prisma.PostCreateWithoutAuthorInput[] = [];
+    while (postCounter < NUMBER_OF_POSTS_PER_USER) {
+      const post: Prisma.PostCreateWithoutAuthorInput = {
+        title: faker.word.words({ count: 3 }),
+        content: faker.word.words({ count: 100 }),
+      };
+      fakePosts.push(post);
+      postCounter++;
+    }
+
     const fakePerson: Prisma.UserCreateInput = {
       email: faker.internet.email(),
       name: faker.person.fullName(),
       posts: {
-        createMany: { data: [fakePost] },
+        createMany: { data: fakePosts },
       },
     };
     allPeople.push(fakePerson);

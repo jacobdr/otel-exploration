@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pnpm compile && concurrently 'docker-compose up' 'cd packages/app && pnpm start' 'cd packages/secondary-service && pnpm start'",
+    "start": "pnpm compile && concurrently 'docker-compose up' 'cd packages/app && pnpm start | pino-pretty -i pid,hostname' 'cd packages/secondary-service && pnpm start | pino-pretty -i pid,hostname'",
     "start:all": "concurrently pnpm:start:signoz pnpm:start",
     "compile": "tsc --build --verbose",
     "start:signoz": "cd submodules/signoz/deploy && docker-compose -f ./docker/clickhouse-setup/docker-compose.yaml up -d",
@@ -15,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "pino-pretty": "^11.2.1",
     "typescript": "^5.5.2"
   }
 }

@@ -1,5 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["package.json", "./src"],
-  "compilerOptions": { "outDir": "./dist" }
+  "compilerOptions": {
+    "composite": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node10",
+    "outDir": "./dist/cjs"
+  }
 }
