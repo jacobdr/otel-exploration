@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "type": "commonjs",
+  "types": "./dist/cjs/src/index.d.ts",
+  "main": "./dist/cjs/src/index.js",
   "exports": {
-    "import": null,
+    "import": {
+      "import": "./dist/cjs/src/index.js",
+      "types": "./dist/cjs/src/index.d.ts"
+    },
     "require": {
       "require": "./dist/cjs/src/index.js",
       "types": "./dist/cjs/src/index.d.ts"
@@ -26,6 +31,7 @@
     "typescript": "^5.5.2"
   },
   "dependencies": {
+    "@appsignal/opentelemetry-instrumentation-bullmq": "^0.7.1",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/context-async-hooks": "^1.25.1",
     "@opentelemetry/core": "^1.25.1",

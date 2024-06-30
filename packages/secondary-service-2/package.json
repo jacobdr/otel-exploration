@@ -1,0 +1,25 @@
+{
+  "name": "@otel-exploration/secondary-service-2",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "",
+  "scripts": {
+    "start": "tsx src/index.mts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@opentelemetry/instrumentation": "^0.52.1",
+    "@types/node": "^20.14.8",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@otel-exploration/db": "workspace:*",
+    "@otel-exploration/telemetry": "workspace:*",
+    "fastify": "^4.28.0"
+  }
+}

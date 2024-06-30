@@ -1,3 +1,3 @@
 export * from "./telemetry";
 export * from "./logging";
-export type { Resource } from "@opentelemetry/resources";
+export { Resource } from "@opentelemetry/resources";

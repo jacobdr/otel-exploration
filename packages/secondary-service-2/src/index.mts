@@ -6,7 +6,9 @@ import {
 import { PrismaClient } from "@otel-exploration/db";
 import packageJson from "../package.json";
 
-const PORT = 3001;
+console.log("JDR DEBUG import", import.meta.url);
+
+const PORT = 3002;
 
 export async function runServer() {
   const { resource } = await setupTelemetry(packageJson);
@@ -24,12 +26,12 @@ export async function runServer() {
   });
 
   // Declare a route
-  fastify.get("/bar", async function rootRoute(request, reply) {
-    fastifyLogger.debug("Secondary service incoming headers", {
+  fastify.get("/foo", async function rootRoute(request, reply) {
+    fastifyLogger.debug("Secondary service 2 incoming headers", {
       httpHeaders: request.headers,
     });
     const users = await prismaClient.post.findMany();
-    reply.send({ hello: "world", users });
+    reply.send({ service: 2, users });
   });
 
   // Run the server!

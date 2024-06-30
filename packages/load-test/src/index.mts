@@ -4,7 +4,7 @@ import http from "k6/http";
 export const options = {
   vus: 20,
   // duration: "10s",
-  duration: "30s",
+  duration: "120s",
 };
 
 async function generateLoad() {

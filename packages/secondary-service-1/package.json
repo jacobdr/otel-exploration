@@ -1,0 +1,25 @@
+{
+  "name": "@otel-exploration/secondary-service-1",
+  "version": "1.0.0",
+  "description": "",
+  "type": "commonjs",
+  "main": "",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.8",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@otel-exploration/telemetry": "workspace:*",
+    "@otel-exploration/db": "workspace:*",
+    "@otel-exploration/queue": "workspace:*",
+    "fastify": "^4.28.0"
+  }
+}

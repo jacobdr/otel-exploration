@@ -71,18 +71,33 @@ export async function runServer({ resource }: { resource: Resource }) {
     reply.send({ hello: "world", users });
   });
 
-  fastify.get("/db/metrics", async function rootRoute(_request, reply) {
-    const prismaMetrics = await prismaClient.$metrics.json();
-    fastifyLogger.info("Prisma metrics", { prismaMetrics });
-    reply.send(prismaMetrics);
-  });
+  fastify.get(
+    "/db/metrics/json",
+    async function prismaMetricsJson(_request, reply) {
+      const prismaMetrics = await prismaClient.$metrics.json();
+      fastifyLogger.info("Prisma metrics JSON", { prismaMetrics });
+      reply.send(prismaMetrics);
+    }
+  );
+
+  fastify.get(
+    "/db/metrics/prometheus",
+    async function prismaMetricsPrometheus(_request, reply) {
+      const prismaMetrics = await prismaClient.$metrics.prometheus();
+      fastifyLogger.info("Prisma metrics Prometheus", { prismaMetrics });
+      reply.send(prismaMetrics);
+    }
+  );
 
   fastify.get(
     "/dynamic-route/:name",
     {},
     async function dynamicRoute(request, reply) {
       const { params } = request;
-      fastifyLogger.info("Route params", { params });
+      fastifyLogger.info("Route params", {
+        params,
+        some: { nested: true, number: 10 },
+      });
       reply.send(params);
     }
   );

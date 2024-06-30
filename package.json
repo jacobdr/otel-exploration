@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pnpm compile && concurrently 'docker-compose up' 'cd packages/app && pnpm start | pino-pretty -i pid,hostname' 'cd packages/secondary-service && pnpm start | pino-pretty -i pid,hostname'",
+    "start": "pnpm compile && concurrently pnpm:start:dependencies 'cd packages/app && pnpm start | pino-pretty -i pid,hostname' 'cd packages/secondary-service && pnpm start | pino-pretty -i pid,hostname'",
     "start:all": "concurrently pnpm:start:signoz pnpm:start",
+    "start:dependencies": "docker-compose up",
     "compile": "tsc --build --verbose",
     "start:signoz": "cd submodules/signoz/deploy && docker-compose -f ./docker/clickhouse-setup/docker-compose.yaml up -d",
     "stop:signoz": "cd submodules/signoz/deploy && docker-compose -f ./docker/clickhouse-setup/docker-compose.yaml down"

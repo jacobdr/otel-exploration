@@ -53,6 +53,7 @@ import * as PI from "@prisma/instrumentation";
 import { Resource } from "@opentelemetry/resources";
 // TODO: Remove this
 import { PinoInstrumentation } from "@opentelemetry/instrumentation-pino";
+import { BullMQInstrumentation } from "@appsignal/opentelemetry-instrumentation-bullmq";
 
 export interface IRequiredTelemetryConfig {
   name: string;
@@ -164,6 +165,7 @@ export function setupTelemetry(config: IRequiredTelemetryConfig) {
         //   console.info("JDR DEBUG pino hook got invoked", { _span, _record });
         // },
       }),
+      new BullMQInstrumentation(),
     ],
   });
 

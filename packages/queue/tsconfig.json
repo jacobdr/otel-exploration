@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.json",
+  "references": [{ "path": "../telemetry" }, { "path": "../db" }],
+  "include": ["package.json", "./src"],
+  "compilerOptions": { "outDir": "./dist" }
+}

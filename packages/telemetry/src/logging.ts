@@ -7,7 +7,7 @@ import {
   Span,
 } from "@opentelemetry/api";
 
-import type {Resource} from '@opentelemetry/resources'
+import type { Resource } from "@opentelemetry/resources";
 
 import type { FastifyReply } from "fastify";
 import type { Options as IPinoOTLPTransportOptions } from "pino-opentelemetry-transport";
@@ -123,13 +123,12 @@ export function getTracingContext():
 
 export async function buildLogger({
   loggerName,
-  resource
+  resource,
 }: {
   loggerName: string;
   resource: Resource;
 }): Promise<BasicLogger> {
   const { pino, levels } = await import("pino");
-  resource.attributes
 
   const options: LoggerOptions = {
     name: `${loggerName}:rootLogger`,
