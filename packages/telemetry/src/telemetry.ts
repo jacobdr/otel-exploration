@@ -145,6 +145,7 @@ export function setupTelemetry(config: IRequiredTelemetryConfig) {
       //     }
       //   },
       // }),
+      new HttpInstrumentation(),
       new FastifyInstrumentation({
         enabled: true,
         requestHook: async function fastifyRequestHook(

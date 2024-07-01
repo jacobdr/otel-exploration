@@ -22,6 +22,11 @@ function makeRandomString(length: number): string {
   return result;
 }
 
+function getRandomElement<T extends unknown[]>(array: T) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex] as T[number];
+}
+
 export async function runServer({ resource }: { resource: Resource }) {
   const prismaClient = new PrismaClient({
     // log: ["query"],
@@ -31,6 +36,8 @@ export async function runServer({ resource }: { resource: Resource }) {
     loggerName: packageJson.name,
     resource,
   });
+
+  const allUserIds = await prismaClient.user.findMany({ select: { id: true } });
 
   const fastifyLogger = rootLogger.child("fastify");
   // Deferred loading so that telemetry can monkey patch
@@ -60,6 +67,30 @@ export async function runServer({ resource }: { resource: Resource }) {
     });
     reply.send({ hello: "world", users });
   });
+
+  fastify.get(
+    "/join-strategy/subset",
+    async function rootRoute(_request, reply) {
+      const users = await prismaClient.user.findMany({
+        relationLoadStrategy: "join",
+        where: { id: getRandomElement(allUserIds).id },
+        include: { posts: true },
+      });
+      reply.send({ hello: "world", users });
+    }
+  );
+
+  fastify.get(
+    "/query-strategy/subset",
+    async function slowRoute(_request, reply) {
+      const users = await prismaClient.user.findMany({
+        relationLoadStrategy: "query",
+        where: { id: getRandomElement(allUserIds).id },
+        include: { posts: true },
+      });
+      reply.send({ hello: "world", users });
+    }
+  );
 
   fastify.get("/external-service", async function slowRoute(_request, reply) {
     const users = await prismaClient.user.findMany({

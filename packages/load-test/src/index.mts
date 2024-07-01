@@ -10,6 +10,8 @@ export const options = {
 async function generateLoad() {
   http.get("http://localhost:3000/join-strategy");
   http.get("http://localhost:3000/query-strategy");
+  http.get("http://localhost:3000/join-strategy/subset");
+  http.get("http://localhost:3000/query-strategy/subset");
 }
 
 export default generateLoad;
